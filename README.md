@@ -1,5 +1,10 @@
 # Snapmaker U1 — Flash Recovery
 
+> [!WARNING]
+> **For experienced users only — last resort.**
+> This tool performs low-level flash operations directly on the motherboard.
+> Only use this when all other recovery options have failed and you understand what you are doing.
+
 Recovers a bricked Snapmaker U1 via the motherboard **Maskrom** mode using [rkdeveloptool](https://github.com/rockchip-linux/rkdeveloptool) and [u1-firmware-tools](https://github.com/paxx12/u1-firmware-tools).
 
 ## Requirements
