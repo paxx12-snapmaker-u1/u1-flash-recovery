@@ -160,7 +160,7 @@ flash_full() {
     if [[ -n "$FIRMWARE_BIN" ]]; then
         clone_u1_firmware_tools
         unpack_firmware "$FIRMWARE_BIN"
-        local loader="$UNPACK_DIR/rkfw/loader.img"
+        local loader="$UNPACK_DIR/rkaf/MiniLoaderAll.bin"
         local parts_dir="$UNPACK_DIR/rkaf"
         local pkg_file="$parts_dir/package-file"
 
@@ -245,12 +245,12 @@ build_rkdeveloptool
 if [[ "$DRY_RUN" == false ]]; then
     echo
     info "Put the U1 motherboard into Maskrom mode:"
-    echo "  1. Power off the printer and unplug the power cable."
-    echo "  2. Locate the MASKROM button on the motherboard."
-    echo "  3. Hold MASKROM, then connect a USB-C cable from the USB OTG port"
-    echo "     (the hub/toolhead port) to this computer."
-    echo "  4. Release the button after ~2 seconds."
-    echo "  NOTE: Do NOT connect mains power — the printer is powered via USB."
+    echo "  1. Power off the printer."
+    echo "  2. Locate the MASKROM pad on the motherboard."
+    echo "  3. Short the MASKROM pad to GND (use tweezers or a wire)."
+    echo "  4. Connect a USB-C cable from the USB OTG port (hub/toolhead port) to this computer."
+    echo "  5. Power on the printer."
+    echo "  6. Wait ~2 seconds, then remove the short."
     echo
     read -rp "Press Enter when ready..."
     wait_for_device

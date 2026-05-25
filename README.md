@@ -56,11 +56,13 @@ rom.img       →  rk_afptool.py    →  Image/<partition>.img  (all flashed exc
 
 ## Maskrom mode
 
-1. Power off the printer and unplug the mains power cable
-2. Locate the **MASKROM** button on the motherboard
-3. Hold **MASKROM**, then connect a **USB-C cable** from the **USB OTG port** (the hub/toolhead port) to this computer
-4. Release after ~2 seconds — the printer is powered via USB, do **not** connect mains power
-5. Run `./recovery.sh` — it will confirm device detection
+1. Power off the printer
+2. Locate the **MASKROM** pad on the motherboard
+3. Short the **MASKROM** pad to **GND** (use tweezers or a wire)
+4. Connect a **USB-C cable** from the **USB OTG port** (hub/toolhead port) to this computer
+5. Power on the printer
+6. Wait ~2 seconds, then remove the short
+7. Run `./recovery.sh` — it will confirm device detection
 
 ## Files
 
