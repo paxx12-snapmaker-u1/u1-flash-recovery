@@ -32,6 +32,8 @@ require() {
 rk() {
     if [[ "$DRY_RUN" == true ]]; then
         echo "[dry-run] $RKDEVELOPTOOL $*"
+    elif [[ "$(id -u)" -ne 0 ]]; then
+        sudo "$RKDEVELOPTOOL" "$@"
     else
         "$RKDEVELOPTOOL" "$@"
     fi
