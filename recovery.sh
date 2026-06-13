@@ -197,6 +197,15 @@ flash_full() {
     success "Full flash complete. Reboot the printer."
 }
 
+backup_misc() {
+    local out="$SCRIPT_DIR/misc_backup_$(date +%Y%m%d_%H%M%S).img"
+    echo
+    info "Backing up misc partition to $(basename "$out")..."
+    rk rlx misc "$out"
+    success "Backup saved: $out"
+    warn "Keep this file safe — it contains your device serial number and Snapmaker Cloud certificate."
+}
+
 flash_oem_userdata() {
     echo
     warn "OEM + USERDATA FLASH: erases data, flashes oem and userdata only."
@@ -229,6 +238,13 @@ for arg in "$@"; do
             echo "  --dry-run   Show rkdeveloptool commands without executing them."
             echo "              Skips device detection and build steps."
             echo "  --help      Show this help."
+            echo
+            echo "Menu options:"
+            echo "  1) Full flash"
+            echo "  2) OEM + userdata only"
+            echo "  3) Download firmware"
+            echo "  4) Backup misc partition"
+            echo "  5) Exit"
             exit 0
             ;;
         *) error "Unknown option: $arg" ;;
@@ -263,9 +279,10 @@ info "What would you like to do?"
 echo "  1) Full flash  (unpack .bin, flash all partitions except misc)"
 echo "  2) OEM + userdata only  (erase data, re-flash oem & userdata)"
 echo "  3) Download firmware .bin file only"
-echo "  4) Exit"
+echo "  4) Backup misc partition  (serial number + cloud certificate)"
+echo "  5) Exit"
 echo
-read -rp "Choice [1-4]: " action
+read -rp "Choice [1-5]: " action
 
 case "$action" in
     1)
@@ -279,6 +296,9 @@ case "$action" in
         download_firmware
         ;;
     4)
+        backup_misc
+        ;;
+    5)
         info "Bye."
         ;;
     *)
