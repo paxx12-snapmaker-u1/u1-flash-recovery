@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-PackageHomePage: https://github.com/paxx12-snapmaker-u1/u1-flash-recovery
+# SPDX-FileCopyrightText: Copyright (c) 2026 @paxx12
+
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
